@@ -2,80 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookingAt2DScript : MonoBehaviour {
-
-
-	#region Singleton
-	public static LookingAt2DScript instance;
-
-
-	private void Awake() {
-		if(instance != null){
-			Debug.LogError("There 2 LookingAt2DScript in the Scene");
-			return;
-		}
-		instance = this;
-
-	}	
-
-	#endregion
-	/*
-	public Camera cam;
-	
-	private void Start() {
-		cam = Camera.main;
-	}
-	*/
+public static class TransformExtensions {
 
 #region LookAt2D
-/*
-	public void LookAt2D(Transform target){
 
-		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(transform.position.x,transform.position.y);
-
-		float angle =  Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg;
-
-		transform.localEulerAngles = new Vector3(0,0,angle);
-
-		
-
-	}
-
-
-	public void LookAt2D(Vector3 targetPos){
-
-		Vector2 lookDir = new Vector2(targetPos.x,targetPos.y) - new Vector2(transform.position.x,transform.position.y);
-
-		float angle =  Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg;
-
-		transform.localEulerAngles = new Vector3(0,0,angle);
-
-	}
-
-
-	public void LookAt2D(Vector2 targetPos){
-
-		Vector2 lookDir = targetPos - new Vector2(transform.position.x,transform.position.y);
-
-		float angle =  Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg;
-
-		transform.localEulerAngles = new Vector3(0,0,angle);
-
-	}
-
-
-	public void LookAt2D(GameObject target){
-
-		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(transform.position.x,transform.position.y);
-
-		float angle =  Mathf.Atan2(lookDir.y, lookDir.x)* Mathf.Rad2Deg;
-
-		transform.localEulerAngles = new Vector3(0,0,angle);
-
-	}
-
-*/
-	public void LookAt2D(Transform who, Vector2 targetPos){
+	public static void LookAt2D(this Transform who, Vector2 targetPos){
 
 		Vector2 lookDir = targetPos - new Vector2(who.position.x,who.position.y);
 
@@ -85,7 +16,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(Transform who, Vector2 targetPos, float angleModifier){
+	public static void LookAt2D(this Transform who, Vector2 targetPos, float angleModifier){
 
 		Vector2 lookDir = targetPos - new Vector2(who.position.x,who.position.y);
 
@@ -96,7 +27,7 @@ public class LookingAt2DScript : MonoBehaviour {
 	}
 
 
-	public void LookAt2D(Transform who, Vector3 targetPos){
+	public static  void LookAt2D(this Transform who, Vector3 targetPos){
 
 		Vector2 lookDir = new Vector2(targetPos.x,targetPos.y) - new Vector2(who.position.x,who.position.y);
 
@@ -106,7 +37,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 	
-	public void LookAt2D(Transform who, Vector3 targetPos, float angleModifier){
+	public static  void LookAt2D(this Transform who, Vector3 targetPos, float angleModifier){
 
 		Vector2 lookDir = new Vector2(targetPos.x,targetPos.y) - new Vector2(who.position.x,who.position.y);
 
@@ -116,7 +47,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(Transform who, Transform target){
+	public static  void LookAt2D(this Transform who, Transform target){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -126,7 +57,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(Transform who, Transform target, float angleModifier){
+	public static  void LookAt2D(this Transform who, Transform target, float angleModifier){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -136,7 +67,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(Transform who, GameObject target){
+	public static  void LookAt2D(this Transform who, GameObject target){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -146,7 +77,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(Transform who, GameObject target, float angleModifier){
+	public static  void LookAt2D(this Transform who, GameObject target, float angleModifier){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -156,7 +87,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, GameObject target){
+	public static  void LookAt2D(this GameObject who, GameObject target){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -166,7 +97,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, GameObject target, float angleModifier){
+	public static  void LookAt2D(this GameObject who, GameObject target, float angleModifier){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -176,7 +107,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Transform target){
+	public static  void LookAt2D(this GameObject who, Transform target){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -186,7 +117,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Transform target, float angleModifier){
+	public static  void LookAt2D(this GameObject who, Transform target, float angleModifier){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -196,7 +127,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Vector3 targetPos){
+	public static  void LookAt2D(this GameObject who, Vector3 targetPos){
 
 		Vector2 lookDir = new Vector2(targetPos.x, targetPos.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -206,7 +137,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Vector3 targetPos, float angleModifier){
+	public static  void LookAt2D(this GameObject who, Vector3 targetPos, float angleModifier){
 
 		Vector2 lookDir = new Vector2(targetPos.x, targetPos.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -216,7 +147,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Vector2 targetPos){
+	public static  void LookAt2D(this GameObject who, Vector2 targetPos){
 
 		Vector2 lookDir = targetPos - new Vector2(who.transform.position.x, who.transform.position.y);
 
@@ -226,7 +157,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LookAt2D(GameObject who, Vector2 targetPos, float angleModifier){
+	public static  void LookAt2D(this GameObject who, Vector2 targetPos, float angleModifier){
 
 		Vector2 lookDir = targetPos - new Vector2(who.transform.position.x, who.transform.position.y);
 
@@ -242,7 +173,7 @@ public class LookingAt2DScript : MonoBehaviour {
 #region LerpLookAt2D
 
 
-	public void LerpLookAt2D(Transform who, Vector2 targetPos,float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Vector2 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -289,7 +220,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, Vector2 targetPos, float angleModifier,float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Vector2 targetPos, float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -336,7 +267,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, Vector3 target,float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Vector3 target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -383,7 +314,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, Vector3 target,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Vector3 target,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -430,7 +361,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, GameObject target, float smoothTime){
+	public static void LerpLookAt2D(this Transform who, GameObject target, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -477,7 +408,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, GameObject target,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this Transform who, GameObject target,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -524,7 +455,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, Transform target, float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Transform target, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -571,7 +502,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(Transform who, Transform target, float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this Transform who, Transform target, float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -618,7 +549,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Vector2 targetPos,float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Vector2 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -666,7 +597,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Vector2 targetPos,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Vector2 targetPos,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -714,7 +645,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Vector3 targetPos,float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Vector3 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -762,7 +693,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Vector3 targetPos,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Vector3 targetPos,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -810,7 +741,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Transform target,float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Transform target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -858,7 +789,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, Transform target,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, Transform target,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -906,7 +837,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, GameObject target,float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, GameObject target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -954,7 +885,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpLookAt2D(GameObject who, GameObject target,float angleModifier, float smoothTime){
+	public static void LerpLookAt2D(this GameObject who, GameObject target,float angleModifier, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -1006,7 +937,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 #region ReverseLookAt2D
 
-	public void ReverseLookAt2D(Transform who, Vector2 targetPos){
+	public static void ReverseLookAt2D(this Transform who, Vector2 targetPos){
 
 		Vector2 lookDir = targetPos - new Vector2(who.position.x,who.position.y);
 
@@ -1016,7 +947,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}	
 
-	public void ReverseLookAt2D(Transform who, Vector3 targetPos){
+	public static void ReverseLookAt2D(this Transform who, Vector3 targetPos){
 
 		Vector2 lookDir = new Vector2(targetPos.x,targetPos.y) - new Vector2(who.position.x,who.position.y);
 
@@ -1026,7 +957,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(Transform who, GameObject target){
+	public static void ReverseLookAt2D(this Transform who, GameObject target){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -1036,7 +967,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(Transform who, Transform target){
+	public static void ReverseLookAt2D(this Transform who, Transform target){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.position.x,who.position.y);
 
@@ -1046,7 +977,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(GameObject who, Vector2 targetPos){
+	public static void ReverseLookAt2D(this GameObject who, Vector2 targetPos){
 
 		Vector2 lookDir = targetPos - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -1056,7 +987,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(GameObject who, Vector3 targetPos){
+	public static void ReverseLookAt2D(this GameObject who, Vector3 targetPos){
 
 		Vector2 lookDir = new Vector2(targetPos.x, targetPos.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -1066,7 +997,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(GameObject who, Transform target){
+	public static void ReverseLookAt2D(this GameObject who, Transform target){
 
 		Vector2 lookDir = new Vector2(target.position.x,target.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -1076,7 +1007,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void ReverseLookAt2D(GameObject who, GameObject target){
+	public static void ReverseLookAt2D(this GameObject who, GameObject target){
 
 		Vector2 lookDir = new Vector2(target.transform.position.x,target.transform.position.y) - new Vector2(who.transform.position.x,who.transform.position.y);
 
@@ -1090,7 +1021,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 #region LerpReverseLookAt2D
 
-	public void LerpReverseLookAt2D(Transform who, Vector2 targetPos,float smoothTime){
+	public static void LerpReverseLookAt2D(this Transform who, Vector2 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -1137,7 +1068,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpReverseLookAt2D(Transform who, Vector3 target,float smoothTime){
+	public static void LerpReverseLookAt2D(this Transform who, Vector3 target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -1184,7 +1115,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpReverseLookAt2D(Transform who, GameObject target, float smoothTime){
+	public static void LerpReverseLookAt2D(this Transform who, GameObject target, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -1231,7 +1162,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 	
-	public void LerpReverseLookAt2D(Transform who, Transform target, float smoothTime){
+	public static void LerpReverseLookAt2D(this Transform who, Transform target, float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.localEulerAngles;
@@ -1278,7 +1209,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpReverseLookAt2D(GameObject who, Vector2 targetPos,float smoothTime){
+	public static void LerpReverseLookAt2D(this GameObject who, Vector2 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -1326,7 +1257,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpReverseLookAt2D(GameObject who, Vector3 targetPos,float smoothTime){
+	public static void LerpReverseLookAt2D(this GameObject who, Vector3 targetPos,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -1374,7 +1305,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 
-	public void LerpReverseLookAt2D(GameObject who, Transform target,float smoothTime){
+	public static void LerpReverseLookAt2D(this GameObject who, Transform target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -1422,7 +1353,7 @@ public class LookingAt2DScript : MonoBehaviour {
 
 	}
 	
-	public void LerpReverseLookAt2D(GameObject who, GameObject target,float smoothTime){
+	public static void LerpReverseLookAt2D(this GameObject who, GameObject target,float smoothTime){
 
 		Vector3 currentRotation, nextRotation;
         currentRotation = who.transform.localEulerAngles;
@@ -1472,26 +1403,33 @@ public class LookingAt2DScript : MonoBehaviour {
 
 #endregion
 
-	/*
-	public Vector2 GetMousePos(){
-
-		Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-		return mousePos;
-
-
-	}
-
-	*/
 	
-	public void RevertDirection(GameObject who){
+
+	public static void RevertDirection(this GameObject who){
 
 		Vector3 actualRotation = who.transform.localEulerAngles;
 
-		actualRotation = new Vector3(who.transform.localEulerAngles.x,who.transform.localEulerAngles.y,who.transform.localEulerAngles.z+180f);
+		actualRotation = new Vector3(
+			who.transform.localEulerAngles.x,
+			who.transform.localEulerAngles.y,
+			who.transform.localEulerAngles.z+180f);
 
 		who.transform.localEulerAngles = actualRotation; 
 	}
+
+	public static void RevertDirection(this Transform who){
+
+		Vector3 actualRotation = who.localEulerAngles;
+
+		actualRotation = new Vector3(
+			who.localEulerAngles.x,
+			who.localEulerAngles.y,
+			who.localEulerAngles.z+180f);
+
+		who.localEulerAngles = actualRotation; 
+	}
+
+	
 
 }
 
